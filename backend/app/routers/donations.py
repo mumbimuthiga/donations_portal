@@ -1,33 +1,34 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 
-from app.schemas.donation import(
+from app.schemas.donation import (
     DonationRequest,
     DonationSuccessResponse,
     DonationFailureResponse,
-    PaymentStatus,
 )
 from app.services.payment_service import PaymentService
-router=APIRouter(
-    prefix="/api/v1",
-    tags=["donations"],
+
+router = APIRouter(
+    prefix="/api/v1/donations",
+    tags=["Donations"],
 )
+
 payment_service = PaymentService()
 
-@router.get("/health")
-async def health_check():
-    return {
-        "status": "ok",
-        "message": "MSF Donation API is running smoothly."
-    }
-@router.post("/donate", response_model=DonationSuccessResponse | DonationFailureResponse)
-async def create_donation(donation_request: DonationRequest):
-    """
-    Endpoint to process a donation request.
 
-    Args:
-        donation_request (DonationRequest): The donation request payload.
-
-    Returns:
-        DonationSuccessResponse | DonationFailureResponse: The response indicating success or failure of the donation.
+@router.post(
+    "",
+    status_code=status.HTTP_200_OK,
+    response_model=DonationSuccessResponse | DonationFailureResponse,
+    summary="Process a donation",
+    description="Accepts a donation request and simulates payment processing.",
+)
+async def create_donation(request: DonationRequest):
     """
-    return payment_service.process_donation(donation_request)
+    Process a donor's contribution.
+
+    Returns either:
+
+    - DonationSuccessResponse
+    - DonationFailureResponse
+    """
+    return payment_service.process_donation(request)
