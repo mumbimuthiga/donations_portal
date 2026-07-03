@@ -93,7 +93,7 @@ return (
                     {...register("name")}
                     id="donor-name"
                     type="text"
-                    placeholder="Wanjiru Kamau"
+                    placeholder="Tester Name"
                     autoComplete="name"
                     className="mt-1.5 w-full rounded-lg border border-stone-300 px-3.5 py-2.5 text-stone-900 placeholder-stone-400 outline-none transition focus:ring-2 focus:ring-teal-600 focus:border-teal-600"
                   />
@@ -113,7 +113,7 @@ return (
                   {...register("email")}
                     id="donor-email"
                     type="email"
-                    placeholder="wanjiru@email.com"
+                    placeholder="test@email.com"
                     autoComplete="email"
                     className="mt-1.5 w-full rounded-lg border border-stone-300 px-3.5 py-2.5 text-stone-900 placeholder-stone-400 outline-none transition focus:ring-2 focus:ring-teal-600 focus:border-teal-600"
                   />
@@ -138,7 +138,7 @@ return (
                       type="number"
                       inputMode="numeric"
                       min={0}
-                      placeholder="Other amount"
+                      placeholder="Amount"
                       {...register("amount", { valueAsNumber: true })}
                       className="font-mono-num w-full bg-transparent py-2.5 pl-2.5 text-stone-900 placeholder-stone-400 outline-none"
                     />
@@ -222,10 +222,7 @@ return (
         : "Continue to Secure Checkout"}
                 </button>
 
-                <p className="flex items-center justify-center gap-1.5 text-xs text-stone-500">
-                  <Lock className="h-3.5 w-3.5" aria-hidden="true" />
-                  256-bit encrypted connection
-                </p>
+                
                 </fieldset>
               </form>
             </div>

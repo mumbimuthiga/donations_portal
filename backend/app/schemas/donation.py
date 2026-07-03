@@ -39,12 +39,12 @@ class DonationRequest(DonationBase):
     model_config={
         "json_schema_extra": {
             "example": {
-                "name": "Veronicah Mumbi",
-                "email": "veronicmuthiga@gmail.com",
+                "name": "Tester name",
+                "email": "test@gmail.com",
                 "amount": 1000.00,
                 "payment_method": "mpesa",
                 "currency": "KES",
-                "message": "Keep up the good work!"
+                "message": "We see yor work!"
             }
         },
          

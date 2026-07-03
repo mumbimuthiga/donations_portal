@@ -9,7 +9,7 @@ export default function SecurityAssurance() {
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-teal-800 shrink-0">
             <ShieldCheck className="h-4.5 w-4.5 text-amber-400" aria-hidden="true" />
           </div>
-          <h2 className="font-display text-lg text-white">Your details are safe with us</h2>
+          <h2 className="font-display text-lg !text-white">Your details are safe with us</h2>
         </div>
 
         <ul className="mt-5 space-y-3.5 text-sm text-teal-100">
@@ -30,17 +30,10 @@ export default function SecurityAssurance() {
           </li>
         </ul>
 
-        <div className="mt-6 pt-5 border-t border-teal-800 flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-teal-200">
-          <span className="rounded border border-teal-700 px-2 py-1">PCI‑DSS</span>
-          <span className="rounded border border-teal-700 px-2 py-1">TLS 1.3</span>
-          <span className="rounded border border-teal-700 px-2 py-1">Safaricom Daraja API</span>
-        </div>
+        
       </div>
 
-      <p className="mt-4 text-xs leading-relaxed text-stone-500 px-1">
-        MSF Eastern Africa is a registered CBO (No. 12293939). Donations above KES 5,000
-        qualify for a tax-deductible receipt on request.
-      </p>
+     
     </div>
   );
 }
