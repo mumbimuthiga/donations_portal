@@ -72,10 +72,10 @@ return (
               <div className="px-6 sm:px-8 pt-7 pb-6 border-b border-dashed border-stone-300">
                 <div className="flex items-center justify-between">
                   <h2 className="font-display text-2xl text-stone-900">Make a donation</h2>
-                  <ReceiptText className="h-5 w-5 text-stone-300" aria-hidden="true" />
+                  
                 </div>
                 <p className="text-sm text-stone-500 mt-1">
-                  Takes under a minute. You'll get an emailed receipt instantly.
+                  Thank you for your generoisty. You'll get an emailed receipt instantly.
                 </p>
               </div>
 
@@ -86,7 +86,7 @@ return (
 >
                 {/* Name */}
                 <div>
-                  <label htmlFor="donor-name" className="block text-sm font-medium text-stone-800">
+                  <label htmlFor="donor-name" className="block w-full text-left text-sm font-medium text-stone-800">
                     Full name
                   </label>
                   <input
@@ -106,7 +106,7 @@ return (
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="donor-email" className="block text-sm font-medium text-stone-800">
+                  <label htmlFor="donor-email" className="block w-full text-left text-sm font-medium text-stone-800">
                     Email address
                   </label>
                   <input
@@ -126,7 +126,9 @@ return (
 
                 {/* Amount */}
                 <div>
-                  <label className="block text-sm font-medium text-stone-800">Donation amount (KES)</label>
+                  <label
+    className="block w-full text-left text-sm font-medium text-stone-800"
+>Donation amount (KES)</label>
                   
                   <div className="mt-2 flex items-center rounded-lg border border-stone-300 px-3.5 focus-within:ring-2 focus-within:ring-teal-600">
                     <span className="font-mono-num text-sm text-stone-500 pr-2 border-r border-stone-200">
@@ -152,7 +154,9 @@ return (
 
                 {/* Payment method */}
                 <div>
-                  <label className="block text-sm font-medium text-stone-800">Payment method</label>
+                  <label
+    className="block w-full text-left text-sm font-medium text-stone-800"
+>Payment method</label>
                   <div className="mt-1.5 grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button
                       type="button"
@@ -206,11 +210,16 @@ return (
 />
                
 
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center gap-2 rounded-lg bg-teal-800 py-3.5 text-sm font-semibold text-white transition hover:bg-teal-900"
-                >
-                  {method === "mpesa" ? "Send M-Pesa prompt" : "Continue to secure checkout"}
+               <button
+    type="submit"
+    disabled={isSubmitting}
+    className="w-full rounded-lg bg-teal-800 py-3.5 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
+>
+                  {isSubmitting
+    ? "Processing Donation..."
+    : method === "mpesa"
+        ? "Send M-Pesa Prompt"
+        : "Continue to Secure Checkout"}
                 </button>
 
                 <p className="flex items-center justify-center gap-1.5 text-xs text-stone-500">

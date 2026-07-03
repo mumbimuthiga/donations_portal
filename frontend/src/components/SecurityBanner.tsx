@@ -21,7 +21,7 @@ export default function SecurityAssurance() {
             </span>
           </li>
           <li className="flex gap-2.5">
-            <Lock className="h-4.5 w-4.5 text-amber-400 shrink-0 mt-0.5" aria-hidden="true" />
+            <BadgeCheck className="h-4.5 w-4.5 text-amber-400 shrink-0 mt-0.5" aria-hidden="true" />
             <span>Every page on this form is served over an encrypted (TLS) connection.</span>
           </li>
           <li className="flex gap-2.5">
@@ -38,7 +38,7 @@ export default function SecurityAssurance() {
       </div>
 
       <p className="mt-4 text-xs leading-relaxed text-stone-500 px-1">
-        Maji Njema Trust is a registered CBO (No. 2019/0341). Donations above KES 5,000
+        MSF Eastern Africa is a registered CBO (No. 12293939). Donations above KES 5,000
         qualify for a tax-deductible receipt on request.
       </p>
     </div>

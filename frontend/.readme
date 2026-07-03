@@ -1,0 +1,218 @@
+# MSF Donation Portal
+
+A full-stack donation portal built using **FastAPI** and **React** that allows users to make donations through **M-Pesa** or **Card** payments. The application demonstrates a clean separation between the frontend and backend while providing input validation, API documentation, and simulated payment processing.
+
+---
+
+# Frameworks Chosen
+
+## Backend
+
+- FastAPI
+- Pydantic
+- Python 3.13
+
+### Why FastAPI?
+
+I chose **FastAPI** because it is a modern Python framework designed for building high-performance REST APIs. It provides:
+
+- Automatic API documentation using Swagger/OpenAPI
+- Request and response validation through Pydantic
+- Excellent performance with asynchronous support
+- Built-in dependency injection
+- Strong type checking using Python type hints
+
+Using FastAPI allowed me to build a clean, well-documented API while following best practices for API development.
+
+---
+
+## Frontend
+
+- React
+- TypeScript
+- Vite
+- React Hook Form
+- Zod
+- Axios
+- Tailwind CSS
+
+### Why these technologies?
+
+- **React** was chosen for its reusable component architecture and efficient UI rendering.
+- **TypeScript** provides static typing, making the application easier to maintain and reducing runtime errors.
+- **React Hook Form** simplifies form handling while minimizing unnecessary component re-renders.
+- **Zod** provides schema-based client-side validation that complements the backend validation implemented with Pydantic.
+- **Axios** was used to consume the backend REST API through a centralized HTTP client.
+- **Tailwind CSS** enabled rapid development of a clean, responsive user interface.
+
+---
+
+# Assumptions Made
+
+During implementation, the following assumptions were made:
+
+- Payment processing is simulated rather than integrated with a live payment gateway.
+- Donations are processed in Kenyan Shillings (KES).
+- Supported payment methods are limited to M-Pesa and Card.
+- Successful payments generate a simulated transaction reference.
+- Failed payments return predefined application error codes.
+- Donation records are not persisted to a database since persistence was outside the scope of the assessment.
+- Authentication was not implemented because the donation endpoint is publicly accessible.
+
+---
+
+# How I Would Secure the Application in Production
+
+If this application were deployed to a production environment, I would implement the following security measures:
+
+## HTTPS
+
+Serve both the frontend and backend exclusively over HTTPS using TLS certificates to encrypt all communication.
+
+## Input Validation
+
+Continue validating user input on both the client and server.
+
+- Frontend validation using Zod
+- Backend validation using Pydantic
+
+The backend would remain the source of truth for validation.
+
+## Environment Variables
+
+Store all sensitive configuration outside the source code, including:
+
+- Secret keys
+- Database credentials
+- Payment gateway credentials
+- API keys
+
+## Restricted CORS
+
+Instead of allowing requests from all origins, configure CORS to allow only trusted frontend domains.
+
+## Authentication and Authorization
+
+Although the donation endpoint is public, any future administrative endpoints would be protected using JWT authentication and role-based authorization.
+
+## Rate Limiting
+
+Protect public endpoints from abuse by implementing rate limiting using middleware or an API gateway.
+
+## Logging
+
+Implement structured logging while ensuring that sensitive donor information and payment credentials are never written to application logs.
+
+## Database Security
+
+If database persistence is introduced:
+
+- Use parameterized queries or an ORM.
+- Encrypt sensitive data where appropriate.
+- Perform regular backups.
+- Apply least-privilege database access.
+
+## Secrets Management
+
+Manage production secrets using secure services such as:
+
+- GitHub Secrets
+- Azure Key Vault
+- AWS Secrets Manager
+
+instead of storing secrets in the repository.
+
+---
+
+# Future Improvements
+
+Given additional development time, I would implement the following improvements:
+
+- Integrate with the Safaricom Daraja API for real M-Pesa STK Push payments.
+- Integrate a card payment provider such as Iveri.
+- Persist donation records in PostgreSQL.
+- Generate and email donation receipts automatically.
+- Add payment status tracking for pending transactions.
+- Improve the user experience by displaying loading indicators while payment processing is in progress.
+- Add toast notifications for successful and failed payments.
+- Implement comprehensive unit and integration tests.
+- Configure a CI/CD pipeline using GitHub Actions.
+- Introduce structured logging, monitoring, and health checks for better observability.
+
+---
+
+# Project Structure
+
+```
+backend/
+├── app/
+│   ├── core/
+│   ├── routers/
+│   ├── schemas/
+│   ├── services/
+│   ├── utils/
+│   └── main.py
+
+frontend/
+├── src/
+│   ├── api/
+│   ├── components/
+│   ├── pages/
+│   ├── types/
+│   ├── validation/
+│   └── App.tsx
+```
+
+The backend follows a layered architecture where:
+
+- Routers handle HTTP requests and responses.
+- Schemas validate request and response payloads.
+- Services encapsulate business logic.
+- Utilities contain reusable helper functions.
+
+This separation improves maintainability, readability, and testability.
+
+---
+
+# Running the Project
+
+## Backend
+
+```bash
+cd backend
+
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+pip install -r requirements.txt
+
+uvicorn app.main:app --reload
+```
+
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+---
+
+# API Documentation
+
+Once the backend is running, interactive API documentation is available at:
+
+```
+https://donations-portal.onrender.com/docs
+```
+
+---
+
+# Architecture Note
+
+This project was intentionally designed using a layered architecture to separate HTTP concerns from business logic. Validation is handled through Pydantic on the backend and Zod on the frontend, while business logic resides within dedicated service classes. This approach improves maintainability, supports future scalability, and makes the application easier to test and extend.

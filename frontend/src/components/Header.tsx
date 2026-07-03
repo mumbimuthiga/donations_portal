@@ -2,13 +2,13 @@ import React from "react";
 import { Droplet } from "lucide-react";
 
 interface HeaderProps {
-  eyebrow?: string;
+   eyebrow?: string;
   title?: string;
   description?: string;
 }
 
 export default function Header({
-  eyebrow = "MSF Eastern Africa",
+   eyebrow = "MSF Eastern Africa",
   title = "MSF Eastern Africa Donor Portal",
   description = "Every donation is tracked from your wallet to the beneficiaries.",
 }: HeaderProps) {
@@ -20,9 +20,9 @@ export default function Header({
           <span className="text-xs font-semibold tracking-[0.18em] uppercase">{eyebrow}</span>
         </div>
 
-        <h1 className="font-display mt-5 max-w-2xl text-3xl sm:text-4xl lg:text-5xl leading-[1.1] text-stone-900">
+        <h4 className="font-display mt-5 max-w-2xl text-3xl sm:text-4xl lg:text-5xl leading-[1.1] text-stone-900">
           {title}
-        </h1>
+        </h4>
 
         {description && (
           <p className="mt-5 max-w-xl text-base leading-relaxed text-stone-600 sm:text-lg">
