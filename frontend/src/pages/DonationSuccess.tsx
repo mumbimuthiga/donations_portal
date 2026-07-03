@@ -18,7 +18,7 @@ export default function DonationSuccess(){
       <Header
         eyebrow="MSF Eastern Africa"
         title="Asante sana."
-        description="Your gift is confirmed and already on its way to funding the next well."
+        description="Your gift is confirmed and already on its way to funding the next project."
       />
 
       <main className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-12">
