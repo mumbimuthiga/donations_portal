@@ -1,21 +1,19 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from './pages/Home'
-import './App.css'
-
-
+import Home from "./pages/Home";
+import DonationSuccess from "./pages/DonationSuccess";
+import DonationError from "./pages/DonationError";
 
 function App() {
-  
-
   return (
-    <>
-    <Home />
-  
-   
-    </>
-    
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/success" element={<DonationSuccess />} />
+        <Route path="/failed" element={<DonationError />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

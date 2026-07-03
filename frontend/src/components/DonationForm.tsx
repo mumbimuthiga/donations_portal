@@ -13,6 +13,7 @@ import {
 } from "../validation/donationSchema";
 import { submitDonation } from "../api/donationApi";
 import { Currency, PaymentMethod } from "../types/donation";
+import { useNavigate } from "react-router-dom";
 
 export default function DonationForm() {
   const {
@@ -30,6 +31,8 @@ export default function DonationForm() {
   },
 });
 const method = watch("payment_method");
+const navigate = useNavigate();
+
 const onSubmit = async (data: DonationFormData) => {
   try {
     const response = await submitDonation(data);
@@ -37,8 +40,22 @@ const onSubmit = async (data: DonationFormData) => {
     console.log("Donation successful:", response);
 
     reset();
+     if (response.success) {
+      navigate("/success", {
+        state: response,
+      });
+    } else {
+      navigate("/failed", {
+        state: response,
+      });
+    }
   } catch (error) {
     console.error("Donation failed:", error);
+    navigate("/failed", {
+      state: {
+        message: "Unable to process your donation.",
+      },
+    });
   }
 };
 return (

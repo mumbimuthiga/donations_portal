@@ -92,7 +92,8 @@ class DonationSuccessResponse(DonationReceiptBase):
     transaction_reference: str= Field(..., description="Unique Transaction reference for the donation")
     status: PaymentStatus=Field(default=PaymentStatus.PAID, description="Payment Status of the donation")
     amount: Decimal=Field(..., gt=Decimal("0.00"),decimal_places=2, description="Donation amount in Kenyan Shillings (KES)")
-    currency: PaymentCurrency=Field(..., description="Currency of the donation")
+    currency: PaymentCurrency=Field(..., description="Currency of the donation"),
+
 
 
 class DonationFailureResponse(DonationReceiptBase):

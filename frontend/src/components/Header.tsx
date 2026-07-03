@@ -8,9 +8,9 @@ interface HeaderProps {
 }
 
 export default function Header({
-  eyebrow = "Maji Njema · Clean Water Fund",
-  title = "Fifteen litres a day changes everything.",
-  description = "We drill boreholes and build rain-catchment tanks in Kiambu and Machakos counties. Every donation is tracked from your wallet to the well.",
+  eyebrow = "MSF Eastern Africa",
+  title = "MSF Eastern Africa Donor Portal",
+  description = "Every donation is tracked from your wallet to the beneficiaries.",
 }: HeaderProps) {
   return (
     <header className="border-b border-stone-200">
