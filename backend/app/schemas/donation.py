@@ -14,7 +14,10 @@ class PaymentStatus(str,Enum):
     FAILED = "failed"
 class PaymentCurrency(str,Enum):
     KES = "KES"
-    
+class PaymentErrorCode(str, Enum):
+    PAYMENT_DECLINED = "PAYMENT_DECLINED"
+    PAYMENT_TIMEOUT = "PAYMENT_TIMEOUT"
+    INVALID_PAYMENT_METHOD = "INVALID_PAYMENT_METHOD"
 
 class DonationBase(BaseModel):
     """
@@ -22,7 +25,7 @@ class DonationBase(BaseModel):
     """
     name: str = Field(...,min_length=2,max_length=100, description="Name of the donor")
     email: EmailStr = Field(..., description="Email address of the donor")
-    amount: Decimal = Field(..., gt=0.00,decimal_places=2, description="Donation amount in Kenyan Shillings (KES)")
+    amount: Decimal = Field(..., gt=Decimal("0.00"),decimal_places=2, description="Donation amount in Kenyan Shillings (KES)")
     payment_method:PaymentMethod = Field(..., description="Payment method used for the donation")
     currency: PaymentCurrency = Field(..., description="Currency of the donation")
     # message: Optional[str] = Field(default=None,max_length=200, description="Optional message from the donor")
@@ -43,9 +46,22 @@ class DonationRequest(DonationBase):
                 "currency": "KES",
                 "message": "Keep up the good work!"
             }
-        }
+        },
+         "json_schema_extra": {
+           
+            "example": {
+                "success": True,
+                "message": "Donation processed successfully.",
+                "transaction_reference": "TXN123456789",
+                "status": "paid",
+                "amount": 1000.00,
+                "currency": "KES"
+            }}
+        
 
     }
+  
+       
 
 # class DonationResponse(BaseModel):
 #     """
@@ -78,7 +94,7 @@ class DonationFailureResponse(DonationReceiptBase):
     """
     Schema for failed donation response model
     """
-    error_code: str = Field(
+    error_code: PaymentErrorCode = Field(
     ...,
     description="Application-specific error code."
     )
