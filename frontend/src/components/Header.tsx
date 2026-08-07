@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export default function Header({
    eyebrow = "Donation Portals",
-  title = "Donor Portal",
+  title = "Donation Portal",
   description = "Every donation is tracked from your wallet to the beneficiaries.",
 }: HeaderProps) {
   return (
