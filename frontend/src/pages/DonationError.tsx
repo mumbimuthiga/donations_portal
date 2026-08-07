@@ -15,7 +15,7 @@ export default function DonationError(){
       
 
       <Header
-        eyebrow="MSF Eastern Africa"
+        eyebrow="Donations Portal"
         title="Something went wrong."
         description="Don't worry — no funds have left your account. You can try again below."
       />

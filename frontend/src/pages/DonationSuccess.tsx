@@ -16,7 +16,7 @@ export default function DonationSuccess(){
       
 
       <Header
-        eyebrow="MSF Eastern Africa"
+        eyebrow="Donations Portal"
         title="Asante sana."
         description="Your gift is confirmed and already on its way to funding the next project."
       />
