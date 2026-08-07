@@ -8,8 +8,8 @@ interface HeaderProps {
 }
 
 export default function Header({
-   eyebrow = "MSF Eastern Africa",
-  title = "MSF Eastern Africa Donor Portal",
+   eyebrow = "Donation Portals",
+  title = "Donor Portal",
   description = "Every donation is tracked from your wallet to the beneficiaries.",
 }: HeaderProps) {
   return (
